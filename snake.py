@@ -1,5 +1,4 @@
 import pygame
-import time
 import random
 
 # Initialize pygame
@@ -25,8 +24,8 @@ snake_block = 10
 snake_speed = 15
 
 # Font styles for messages and score
-font_style = pygame.font.SysFont(None, 50)
-score_font = pygame.font.SysFont("comicsansms", 35)
+font_style = pygame.font.SysFont(None, 40)
+score_font = pygame.font.SysFont("comicsansms", 10)
 
 # Function to draw our snake
 def our_snake(snake_block, snake_list):
@@ -36,7 +35,14 @@ def our_snake(snake_block, snake_list):
 # Function to display messages
 def message(msg, color):
     mesg = font_style.render(msg, True, color)
-    game_display.blit(mesg, [width / 6, height / 3])
+    text_rect = mesg.get_rect()
+    text_rect.center = (width // 2, height // 2)
+    game_display.blit(mesg, text_rect)
+
+# Function to display score
+def player_score(score):
+    value = score_font.render("Your Score: " + str(score), True, black)
+    game_display.blit(value, [0, 0])
 
 # The main loop of the game
 def gameLoop():
@@ -114,6 +120,9 @@ def gameLoop():
                 game_close = True
 
         our_snake(snake_block, snake_list)
+    
+        # Display score on screen
+        player_score(length_of_snake - 1)
         pygame.display.update()
 
         # Check if the snake has eaten the food
