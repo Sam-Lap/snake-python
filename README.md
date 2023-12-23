@@ -21,7 +21,7 @@ This is a classic Snake Game implemented in Python using the Pygame library. Pla
 ### Setup
 1. Clone the repository in terminal:
    
-   `git clone ###needs to be updated###`
+   `git clone https://github.com/Sam-Lap/snake-python.git`
    
 2. Navigate to the project directory:
    
